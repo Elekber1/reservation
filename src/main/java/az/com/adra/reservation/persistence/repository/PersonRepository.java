@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 public interface PersonRepository extends JpaRepository<DoReserv,Long> {
@@ -43,6 +44,18 @@ public interface PersonRepository extends JpaRepository<DoReserv,Long> {
              DoReserv update(DoReserv doReserv);*/
 
 
+        /* @Query(value = "")
+         public DoReserv findOne(Long id);*/
+
+
+        @Query(value = "update DoReserv d set d.fullname =: fullname, d.topic =: topic, d.date =: date, d.startTime =: startTime," +
+                " d.meetings =: meetings, d.endTime=: endTime where d.id =: id")
+        public DoReserv update( @Param("id") Long in_id);
+
+/*
+    @Query(value = "update DoReserv d set d.fullname =: fullname, d.topic =: topic, d.date =: date, d.startTime =: startTime," +
+            " d.meetings =: meetings, d.endTime=: endTime where d.id =: id")
+    public DoReserv update(@Param("id") Long in_id);*/
 
 }
 

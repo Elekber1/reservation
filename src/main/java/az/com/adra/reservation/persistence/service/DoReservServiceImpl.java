@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 @Service
@@ -40,15 +41,17 @@ public class DoReservServiceImpl implements DoReservService {
     }
 
     @Override
+    public DoReserv update(Long id, DoReserv doReserv) {
+        return personRepository.update(id);
+    }
+
+
+    @Override
     public List<DoReserv> findByFullnameAndDateAndMeetings(String fullname, Date date, Meetings meetings) {
         return personRepository.findByFullnameAndDateAndMeetings(fullname, date, meetings);
     }
 
-    @Override
-    public DoReserv update(DoReserv doReserv) {
-        return personRepository.save(doReserv);
 
-    }
 
 
 }

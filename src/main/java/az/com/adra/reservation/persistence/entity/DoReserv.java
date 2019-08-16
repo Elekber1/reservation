@@ -4,6 +4,9 @@ package az.com.adra.reservation.persistence.entity;
 
 
 
+import az.com.adra.reservation.model.DoReservDto;
+import org.hibernate.annotations.RowId;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalTime;
@@ -143,5 +146,9 @@ public class DoReserv {
                 ", meetings=" + meetings +
                 ", status='" + status + '\'' +
                 '}';
+    }
+
+    public DoReservDto person() {
+        return new DoReservDto(fullname, topic, date, startTime, endTime, meetings);
     }
 }

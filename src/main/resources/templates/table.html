@@ -124,86 +124,33 @@
       </form>
     </div>
     </div>
-    <div class="container">
- 
+
+
+    <div class="container" >
+
   <!-- Trigger the modal with a button -->
-  
+
 
   <!-- Modal -->
   <div class="modal fade" id="myModal"  role="dialog"  >
     <div class="modal-dialog" >
-    
+
       <!-- Modal content-->
       <div class="modal-content" style="background-color: #E8E8E8;">
+
         <!----------UPDATE                  UPDATE                  UPDATE            UPDATE-------------------------------->
           <!----------UPDATE                  UPDATE                  UPDATE            UPDATE-------------------------------->
           <!----------UPDATE                  UPDATE                  UPDATE            UPDATE-------------------------------->
 
-        <div class="modal-body" style="padding:40px 50px;">
-          <form role="form" id="formChange" >
-          	<div class="form-group">
-          		 <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 style="font: normal 30px Arial;">Rezervasiyanı redaktə et</h4>
-    <br /> <br />
-              <label for="usrname"><span></span>Rezerv edən</label>
 
-              <input type="text" class="form-control" id="usrname1" value="Hamlet Məmmədov" disabled style="background-color: white;"><br />
+       <div id="updateReserv">
 
-              <label for="usrname"><span></span>Ad və Soyad</label>
+           <div>
 
-
-              <input type="text" class="form-control"  id="fullnameChange">
-
-            </div>
-           
-            <div class="form-group">
-              <label for="usrname"><span></span>İclasın qısa məqsədi</label>
-
-              <input type="text" class="form-control" id="topicChange">
-
-            </div>
-            <div class="form-group">
-              <label for="psw"><span></span> Başlama tarixi</label>
-
-              <input type="text" class="form-control datepicker" style="background-color: white;" id="dateChange">
-
-            </div>
-            <div class="form-group">
-              <label for="psw"><span></span> Başlama vaxtı</label>
-
-              <input type="time" style="width: 100%; height: 35px; border-radius: 5px;" id="startTimeChange">
-
-            </div>
-              <div class="form-group">
-              <label for="psw"><span></span> Bitmə vaxtı</label>
-
-              <input type="time" style="width: 100%; height: 35px; border-radius: 5px;" id="endTimeChange">
-
-              </div>
-            <div class="form-group">
-              <label for="psw"><span></span> İclas otağını seçin</label>
-
-                <select    id="meetingChange" name="meetings" class="select-css" >
-                    <option  isabled="true" selected="selected" >İclas Otağını Seçin</option>
-
-                    <option th:each="meeting : ${meetingsList}"
-                            th:value="${meeting.id}"
-                            th:utext="${meeting.room}">
-                    </option>
-                </select>
-
-            </div>
-            <br />
-              <button style="font: normal 18px Arial;" type="submit" class="btn btn-success btn-block" id="btnr"><span></span>Redaktə et</button>
-
-               <button style="background-color: #BF1F1F; border: 1px solid #BF1F1F; font: normal 18px Arial;"   Delete type="submit" class="btn btn-success btn-block" id="btnr"><span></span>Rezervasiyanı ləğv et</button>
-          </form>
-        </div>
-        
       </div>
-      
+
     </div>
-  </div> 
+  </div>
 </div>
  
 
@@ -261,11 +208,10 @@
 
                 </select>
             </div>
-
             </div>
             <br />
               <button style="font: normal 18px Arial;" type="submit" class="btn btn-success btn-block"  id="addReservBtn"><span></span>Rezervasiya et</button>
-              <button  id="legvEtBtn" style="background-color: #BF1F1F; border: 1px solid #BF1F1F; font: normal 18px Arial;" type="submit" class="btn btn-success btn-block"  ><span></span>Ləğv et</button>
+              <button  style="background-color: #BF1F1F; border: 1px solid #BF1F1F; font: normal 18px Arial;" type="submit" class="btn btn-success btn-block" id="btnr"><span></span> Ləğv et</button>
       <!--    </form>-->
 
         </div>
@@ -302,11 +248,13 @@
 									<option>Aktiv</option>
 									<option>Deaktiv</option>
 								</select></th>
+                                <th class="column10">Delete</th>
+                                <th class="column11">Edit</th>
 							</tr>
 						</thead>
 
 						<tbody id="firstTable">
-                        <tr  class="myBtn" th:each="item : ${doReservList}" >
+                        <tr  class="myBtn" th:each="item : ${doReservList}">
                             <td class="column1" th:text="${item.id}" id="updateId"></td>
                            <!-- <td class="column2" th:text="${item.personId}"></td>-->
                             <td class="column3" th:text="${item.fullname}" id="updateFullname"></td>
@@ -316,7 +264,10 @@
                             <td class="column7" th:text="${item.endTime}" id="updateEndTime"></td>
                             <td class="column8" th:text="${item.meetings.room}" id="updateRoom"></td>
                             <td class="column9" th:text="${item.status}"></td>
-                            <td class="column10"><a th:href="@{'/delete/'+${item.id}}">Delete</a></td>
+                            <td class="column10"><a th:href="@{'/delete/'+${item.id}}">Delete   </a></td>
+                        <!--    <td class="column11"><a th:href="@{/updateReserv/{id}(id=${item.id})}">Edit</a></td>-->
+                          <!--  <td class="column11"><a th:href="'editDoReserv(\''+ ${item.id} +'\');'">Edit</a></td>-->
+                           <td class="column11"><a th:onclick="'javascript:xccfx(' + ${item.id} + ')'">Edit</a></td>
                         </tr>
 						</tbody>
 
@@ -324,7 +275,7 @@
                         <tr class="myBtn" th:each="item : ${doReservList}" >
                             <td class="column1" th:text="${item.id}"></td>
                             <!-- <td class="column2" th:text="${item.personId}"></td>-->
-                     <!--       <td class="column3" th:text="${item.fullname}"></td>-->
+                            <!-- <td class="column3" th:text="${item.fullname}"></td>-->
                             <td class="column4" th:text="${item.topic}"></td>
                             <td class="column5" th:text="${#dates.format(item.date,'yyyy-MM-dd')}"></td>
                             <td class="column6" th:text="${item.startTime}"></td>

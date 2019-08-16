@@ -6,10 +6,12 @@ import az.com.adra.reservation.model.MeetingsDto;
 
 
 import az.com.adra.reservation.model.PeopleDto;
+import az.com.adra.reservation.persistence.entity.DoReserv;
 import az.com.adra.reservation.persistence.entity.Meetings;
 import az.com.adra.reservation.persistence.service.MeetingsService;
 import az.com.adra.reservation.persistence.service.DoReservService;
 import az.com.adra.reservation.persistence.service.PeopleService;
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +23,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-public class ReservController {
+public class
+ReservController {
 
     @Autowired
     private DoReservService doReservService;
@@ -72,6 +75,12 @@ public class ReservController {
 
         return searchList;
     }
+
+        public DoReservDto doReservEditList(Long id){
+            DoReserv doReservDto = doReservService.findOne(id);
+
+            return doReservDto.person();
+        }
 
    @RequestMapping(value = "/",method = RequestMethod.GET)
     public ModelAndView home (ModelAndView view){
@@ -131,14 +140,28 @@ public class ReservController {
     }
 
 
-    @RequestMapping(value = "/updateReserv")
-    public ModelAndView update(ModelAndView view, DoReservDto doReservDto){
-        doReservService.save(doReservDto.person());
+    @RequestMapping(value = "/updateReserv/{id}", method = RequestMethod.GET)
+    public ModelAndView update(ModelAndView view, DoReservDto doReservDto, DoReserv doReserv,MeetingsDto meetings, @PathVariable("id") Long id){
+       // doReservService.update(id);
+        view.addObject("meetings",new MeetingsDto());
+        view.addObject("meetingsList",meetingsList());
         view.addObject("doReservDto", new DoReservDto());
         view.addObject("doReservList",doReservList());
-        view.setViewName("redirect:/");
-
+        view.setViewName("table");
+        System.out.println("ID**********ID**********ID ==== "+id);
         return view;
+    }
+
+    @RequestMapping("/edit")
+    @ResponseBody
+    public DoReservDto edit(@RequestParam("id") Long id, ModelAndView view){
+        DoReservDto doReservDto1 = doReservEditList(id);
+        view.addObject("doReservDto", new DoReservDto());
+        view.addObject("doReservList",doReservList());
+        System.out.println("ID**********ID**********ID ==== "+id);
+//        view.setViewName("redirect:/");
+
+        return doReservDto1;
     }
 
 }
