@@ -11,10 +11,10 @@ $(function () {
 
     });
 
-    $('#legvEtBtn').click(function () {
-
-        $('#addReservForm').hide();
-    });
+    // $('#legvEtBtn').click(function () {
+    //
+    //     $('#addReservForm').hide();
+    // });
 
 });
 

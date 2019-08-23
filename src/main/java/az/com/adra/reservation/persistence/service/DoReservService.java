@@ -17,7 +17,7 @@ public interface DoReservService {
 
     public DoReserv save(DoReserv doReserv);
 
-    public DoReserv update(Long id, DoReserv doReserv);
+    public DoReserv update(DoReserv doReserv);
 
     public List<DoReserv> findByFullnameAndDateAndMeetings(String fullname, Date date, Meetings meetings);
 

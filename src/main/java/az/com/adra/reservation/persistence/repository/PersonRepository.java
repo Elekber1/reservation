@@ -27,8 +27,7 @@ public interface PersonRepository extends JpaRepository<DoReserv,Long> {
 
         /*@Query("delete from doreserv d where d.id =:id")
            public  DoReserv removeById(@Param("id") Long in_id);*/
-        //@Param("fullname") String in_fullname, @Param("date") Date in_date,
-        //@Param("meetings") Meetings in_meeting
+
         //SELECT d FROM doreserv d WHERE d.fullname =:fullname OR d.date =:date OR d.meetings =:meetings
         //    public void remove(@Param("id") Long id);
 
@@ -47,15 +46,25 @@ public interface PersonRepository extends JpaRepository<DoReserv,Long> {
         /* @Query(value = "")
          public DoReserv findOne(Long id);*/
 
+//    @Param("fullname") String in_fullname, @Param("topic") String in_topic,
+//    @Param("date") Date in_date, @Param("startTime") Time in_startTime,
+//    @Param("endTime") Time in_endTime,  @Param("meetings") Meetings in_meeting
 
-        @Query(value = "update DoReserv d set d.fullname =: fullname, d.topic =: topic, d.date =: date, d.startTime =: startTime," +
-                " d.meetings =: meetings, d.endTime=: endTime where d.id =: id")
-        public DoReserv update( @Param("id") Long in_id);
+
+
 
 /*
     @Query(value = "update DoReserv d set d.fullname =: fullname, d.topic =: topic, d.date =: date, d.startTime =: startTime," +
             " d.meetings =: meetings, d.endTime=: endTime where d.id =: id")
     public DoReserv update(@Param("id") Long in_id);*/
+
+
+
+        @Modifying
+        @Query(value = "update DoReserv d set d.fullname =: fullname, d.topic =: topic, d.date =: date, d.startTime =: startTime," +
+                " d.meetings =: meetings, d.endTime=: endTime where d.id =: id")
+        public DoReserv update(DoReserv doReserv);
+
 
 }
 

@@ -71,7 +71,7 @@
 
 
     <div class="place">
-        <a > <button id="myrezerv" class="button button2">Rezerv et</button></a>
+        <a > <button  class="button button2 myrezerv">Rezerv et</button></a>
 </div>
         
     
@@ -145,14 +145,11 @@
 
        <div id="updateReserv">
 
-           <div>
-
-      </div>
 
     </div>
   </div>
 </div>
- 
+  </div>
 
 <!--rezerv edilen bolme-->
 
@@ -160,15 +157,15 @@
     <div class="container" id="addReservForm">
 
         <!-- Trigger the modal with a button -->
-  
+
 
   <!-- Modal -->
-  <div class="modal fade" id="myModall" role="dialog" >
+  <div class="modal fade" id="addModal" role="dialog" >
     <div class="modal-dialog" >
-    
+
       <!-- Modal content-->
       <div class="modal-content" style="background-color: #E8E8E8;">
-     
+
         <div class="modal-body" style="padding:40px 50px;">
         <!--  <form role="form"   id="addReservForm" method="post" th:action='@{/addReserv}' th:object="${doReservDto}">-->
 
@@ -215,12 +212,11 @@
       <!--    </form>-->
 
         </div>
-        
+
       </div>
-      
+
     </div>
-  </div> 
-</div>
+  </div>
 
     <script>
         function openwindow(){
@@ -248,13 +244,12 @@
 									<option>Aktiv</option>
 									<option>Deaktiv</option>
 								</select></th>
-                                <th class="column10">Delete</th>
-                                <th class="column11">Edit</th>
+                                <th class="column10">Sil</th>
 							</tr>
 						</thead>
 
 						<tbody id="firstTable">
-                        <tr  class="myBtn" th:each="item : ${doReservList}">
+                        <tr  class="myBtn"   th:onclick="'javascript:xccfx(' + ${item.id} + ')'" th:each="item : ${doReservList}">
                             <td class="column1" th:text="${item.id}" id="updateId"></td>
                            <!-- <td class="column2" th:text="${item.personId}"></td>-->
                             <td class="column3" th:text="${item.fullname}" id="updateFullname"></td>
@@ -264,10 +259,10 @@
                             <td class="column7" th:text="${item.endTime}" id="updateEndTime"></td>
                             <td class="column8" th:text="${item.meetings.room}" id="updateRoom"></td>
                             <td class="column9" th:text="${item.status}"></td>
-                            <td class="column10"><a th:href="@{'/delete/'+${item.id}}">Delete   </a></td>
+                            <td class="column10"><a th:href="@{'/delete/'+${item.id}}">Sil </a></td>
                         <!--    <td class="column11"><a th:href="@{/updateReserv/{id}(id=${item.id})}">Edit</a></td>-->
                           <!--  <td class="column11"><a th:href="'editDoReserv(\''+ ${item.id} +'\');'">Edit</a></td>-->
-                           <td class="column11"><a th:onclick="'javascript:xccfx(' + ${item.id} + ')'">Edit</a></td>
+                           <!--<td class="column11"><a>Edit</a></td>-->
                         </tr>
 						</tbody>
 

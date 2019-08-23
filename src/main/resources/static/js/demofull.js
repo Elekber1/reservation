@@ -119,7 +119,7 @@ function xccfx(id) {
         dataType: 'json',
         success: function (data) {
             $('#updateReserv').empty();
-            $('#updateReserv').append(' <div class="modal-body" style="padding:40px 50px;">\n' +
+            $('#updateReserv').append(' <div class="modal-body" id="updateReservModel" style="padding:40px 50px;">\n' +
                 '          <form role="form" id="formChange" action=\'/updateReserv\'>\n' +
                 '          \t<div class="form-group">\n' +
                 '          \t\t <button type="button" class="close" data-dismiss="modal">&times;</button>\n' +
@@ -165,7 +165,10 @@ function xccfx(id) {
                 '                <select    id="meetingChange" name="meetings" class="select-css" >\n' +
                 '                    <option  isabled="true" selected="selected" >İclas Otağını Seçin</option>\n' +
                 '\n' +
-                '                    <option value="'+data.meetings.id+'"></option>\n' +
+                '                 <option foreach ="meeting : meetingsList" \n' +
+                '                            value="'+data.meetings.id+'"\n' +
+                '                            utext="'+data.meetings.room+'">\n' +
+                '                    </option>\n' +
                 '                </select>\n' +
                 '\n' +
                 '            </div>\n' +
@@ -199,10 +202,11 @@ function xccfx(id) {
         searchEnabled: false,
         itemSelectText: '',
       });
+
+
 $(document).ready(function(){
-  $("#myrezerv").click(function(){
-    $("#myModall").modal();
+  $(".myrezerv").click(function(){
+    $("#addModal").modal();
 
   });
 });
-

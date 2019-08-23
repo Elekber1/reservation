@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
+import javax.validation.Valid;
 import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -139,29 +140,31 @@ ReservController {
         return view;
     }
 
+    @RequestMapping("/edit")
+    @ResponseBody
+    public DoReservDto edit(@RequestParam("id") Long id, ModelAndView view, MeetingsDto meetings){
+        DoReservDto doReservDto1 = doReservEditList(id);
+        view.addObject("doReservDto", new DoReservDto());
+        view.addObject("doReservList",doReservList());
+        view.addObject("meetings",new MeetingsDto());
+        view.addObject("meetingsList",meetingsList());
+//        view.setViewName("redirect:/");
+        return doReservDto1;
+    }
 
     @RequestMapping(value = "/updateReserv/{id}", method = RequestMethod.GET)
-    public ModelAndView update(ModelAndView view, DoReservDto doReservDto, DoReserv doReserv,MeetingsDto meetings, @PathVariable("id") Long id){
-       // doReservService.update(id);
+    public DoReserv update(@PathVariable("id") Long id, @Valid @RequestBody DoReserv doReserv, ModelAndView view){
+          doReserv = doReservService.findOne(id);
+        DoReserv doReserv1  =  doReservService.update(doReserv);
         view.addObject("meetings",new MeetingsDto());
         view.addObject("meetingsList",meetingsList());
         view.addObject("doReservDto", new DoReservDto());
         view.addObject("doReservList",doReservList());
         view.setViewName("table");
         System.out.println("ID**********ID**********ID ==== "+id);
-        return view;
+        return doReserv1;
     }
 
-    @RequestMapping("/edit")
-    @ResponseBody
-    public DoReservDto edit(@RequestParam("id") Long id, ModelAndView view){
-        DoReservDto doReservDto1 = doReservEditList(id);
-        view.addObject("doReservDto", new DoReservDto());
-        view.addObject("doReservList",doReservList());
-        System.out.println("ID**********ID**********ID ==== "+id);
-//        view.setViewName("redirect:/");
 
-        return doReservDto1;
-    }
 
 }

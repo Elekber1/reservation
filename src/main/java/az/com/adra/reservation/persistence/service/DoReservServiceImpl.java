@@ -25,10 +25,7 @@ public class DoReservServiceImpl implements DoReservService {
     }
 
     @Override
-    public List<DoReserv> findAll() {
-
-        return personRepository.findAll();
-    }
+    public List<DoReserv> findAll() { return personRepository.findAll();}
 
     @Override
     public void remove(Long id) {
@@ -41,8 +38,8 @@ public class DoReservServiceImpl implements DoReservService {
     }
 
     @Override
-    public DoReserv update(Long id, DoReserv doReserv) {
-        return personRepository.update(id);
+    public DoReserv update(DoReserv doReserv) {
+        return personRepository.update(doReserv);
     }
 
 
