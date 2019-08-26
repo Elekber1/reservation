@@ -1,43 +1,45 @@
+
 <!DOCTYPE html>
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
-    
+
 <head>
-	<title>Otaq Rezervasiyasi</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    
-	<link rel="icon" type="image/png" th:href="@{/images/icons/favicon.ico}"/>
 
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+    <title>Otaq Rezervasiyasi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="icon" type="image/png" th:href="@{/images/icons/favicon.ico}"/>
 
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
 
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
 
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
 
-	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
-    
-    
-     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet" />
-    
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet" />
+
     <link th:href="@{/reserve_search/css/main.css}" rel="stylesheet" />
-<!--====================================================-->
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.7.0/fullcalendar.min.css' />
+    <!--====================================================-->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.7.0/fullcalendar.min.css' />
     <script
-    src="http://code.jquery.com/jquery-2.2.4.min.js"
-    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-    crossorigin="anonymous"></script>
+            src="http://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.3/moment.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.7.0/fullcalendar.min.js'></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet"> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
     <link rel='stylesheet' th:href='@{/css/app.css}' />
 
-    
+
     <script th:src="@{/reserve_button/js/external/jquery-3.4.1.min.js}"></script>
     <script th:src="@{/reserve_button/js/external/jquery.js}"></script>
     <script th:src="@{/reserve_button/js/external/jquery-ui.js}"></script>
@@ -52,258 +54,313 @@
     <script th:src="@{/reserve_button/js/internal/action.js}"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <style>
-  .modal-header, h4, .close {
-    background-color: #E8E8E8;
-    color:#757474 !important;
-    text-align: center;
-    font-size: 30px;
-  }
-  </style>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        .modal-header, h4, .close {
+            background-color: #E8E8E8;
+            color:#757474 !important;
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
 
 </head>
 
 <body>
 
-    <div>
+<div>
 
 
 
     <div class="place">
         <a > <button  class="button button2 myrezerv">Rezerv et</button></a>
-</div>
-        
-    
+    </div>
+
+    <!--Search ####-->
     <div class="s002">
-      <form   method="get" th:action='@{/search}' th:object="${doReservDto}">
-        <fieldset>
-        </fieldset>
-        <div class="inner-form">
-          <div class="input-field first-wrap">
-            <div class="icon-wrap">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-              </svg>
+        <form   method="get" th:action='@{/search}' th:object="${doReservDto}">
+            <fieldset>
+            </fieldset>
+            <div class="inner-form">
+                <div class="input-field first-wrap">
+                    <div class="icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                        </svg>
+                    </div>
+
+                    <input id="searchFullname" type="text" placeholder="Ad Soyad" th:value="*{fullname}" />
+
+                </div>
+                <div class="input-field second-wrap">
+                    <div class="icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path>
+                        </svg>
+                    </div>
+
+                    <input class="datepicker" id="searchDate" type="text" placeholder="Bu gün"  th:value="*{date}"/>
+
+                </div>
+
+                <div class="input-field fouth-wrap">
+                    <div class="icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                        </svg>
+                    </div>
+                    <select   data-trigger="" id="searchMeetings" name="meetings" class="select-css" name1="choices-single-defaul">
+                        <option placeholder="" isabled="true" selected="selected" value="">İclas Otaqları</option>
+
+                        <option th:each="meeting : ${meetingsList}"
+                                th:value="${meeting.id}"
+                                th:utext="${meeting.room}">
+                        </option>
+
+                    </select>
+                </div>
+                <div class="input-field fifth-wrap">
+                    <button class="btn-search" type="submit" id="axtarBtn" >Axtar</button>
+                </div>
             </div>
-
-            <input id="searchFullname" type="text" placeholder="Ad Soyad" th:value="*{fullname}" />
-
-          </div>
-          <div class="input-field second-wrap">
-            <div class="icon-wrap">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path>
-              </svg>
-            </div>
-
-            <input class="datepicker" id="searchDate" type="text" placeholder="Bu gün"  th:value="*{date}"/>
-
-          </div>
-          
-          <div class="input-field fouth-wrap">
-            <div class="icon-wrap">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-              </svg>
-            </div>
-              <select   data-trigger="" id="searchMeetings" name="meetings" class="select-css" name1="choices-single-defaul">
-                  <option placeholder="" isabled="true" selected="selected" value="">İclas Otaqları</option>
-
-                  <option th:each="meeting : ${meetingsList}"
-                          th:value="${meeting.id}"
-                          th:utext="${meeting.room}">
-                  </option>
-
-              </select>
-          </div>
-          <div class="input-field fifth-wrap">
-            <button class="btn-search" type="submit" id="axtarBtn" >Axtar</button>
-          </div>
-        </div>
-      </form>
+        </form>
     </div>
-    </div>
-
-
-    <div class="container" >
-
-  <!-- Trigger the modal with a button -->
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal"  role="dialog"  >
-    <div class="modal-dialog" >
-
-      <!-- Modal content-->
-      <div class="modal-content" style="background-color: #E8E8E8;">
-
-        <!----------UPDATE                  UPDATE                  UPDATE            UPDATE-------------------------------->
-          <!----------UPDATE                  UPDATE                  UPDATE            UPDATE-------------------------------->
-          <!----------UPDATE                  UPDATE                  UPDATE            UPDATE-------------------------------->
-
-
-       <div id="updateReserv">
-
-
-    </div>
-  </div>
 </div>
-  </div>
 
+
+
+    <!-- Trigger the modal with a button -->
+
+
+    <!-- Modal -->
+    <!----------UPDATE                  UPDATE                  UPDATE            UPDATE-------------------------------->
+    <!----------UPDATE                  UPDATE                  UPDATE            UPDATE-------------------------------->
+    <!----------UPDATE                  UPDATE                  UPDATE            UPDATE-------------------------------->
+<div class="container" >
+
+
+    <div class="modal fade" id="myModal"  role="dialog">
+        <div class="modal-dialog" >
+             <!--Modal content-->
+            <div class="modal-content" style="background-color: #E8E8E8;">
+                <div id="updateReserv">
+                <!--id="updateReservModel"-->
+
+                    <!--<div class="modal-body"  style="padding:40px 50px;">-->
+                        <!--<form role="form" id="formChange"  method="get" th:object="${doReservDto}" >-->
+                            <!--<div class="form-group">-->
+                                <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                                <!--<h4 style="font: normal 30px Arial;">Rezervasiyanı redaktə et</h4>-->
+                                <!--<br/> <br/>-->
+                                <!--<label for="usrname"><span></span>Rezerv edən</label>-->
+
+                                <!--<input type="text" class="form-control" id="usrname1" value="Hamlet Məmmədov" disabled style="background-color: white;"><br/>-->
+
+                                <!--<label for="usrname"><span></span>Ad və Soyad</label>-->
+                                <!--<input type="text" class="form-control" id="userrnameEdit" th:value="${doReservDto.fullname}" >-->
+
+                            <!--</div>-->
+
+                            <!--<div class="form-group">-->
+                                <!--<label for="usrname"><span></span>İclasın qısa məqsədi</label>-->
+
+                                <!--<input type="text" class="form-control" id="topicEdit" >-->
+
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label for="psw"><span></span> Başlama tarixi</label>-->
+
+                                <!--<input id="tarixEdit" type="text" class="form-control datepicker" style="background-color: white;" >-->
+
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label for="psw"><span></span> Başlama vaxtı</label>-->
+
+                                <!--<input type="time" style="width: 100%; height: 35px; border-radius: 5px; " id="startTimeEdit" >-->
+
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label for="psw"><span></span> Bitmə vaxtı</label>-->
+
+                                <!--<input type="time" style="width: 100%; height: 35px; border-radius: 5px;"  id="endTimeEdit" >-->
+
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label for="psw"><span></span> İclas otağını seçin</label>-->
+
+                                <!--<select id="roomId" class="select-css" >-->
+                                    <!--<option  disabled selected value>İclas Otağını Seçin</option>-->
+                                    <!--<option th:value="${doReservDto.meetings}"></option>-->
+                                <!--</select>-->
+
+                            <!--</div>-->
+                            <!--<br />-->
+                            <!--<button style="font: normal 18px Arial;" type="submit" class="btn btn-success btn-block" id="btnr"><span></span>Redaktə et</button>-->
+                            <!--<button  style="background-color: #BF1F1F; border: 1px solid #BF1F1F; font: normal 18px Arial;" type="submit" class="btn btn-success btn-block" id="btnr"><span></span>Rezervasiyanı ləğv et</button>-->
+                        <!--</form>-->
+                    <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 <!--rezerv edilen bolme-->
 
 
-    <div class="container" id="addReservForm">
+<div class="container" id="addReservForm">
 
-        <!-- Trigger the modal with a button -->
+    <!-- Trigger the modal with a button -->
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="addModal" role="dialog" >
-    <div class="modal-dialog" >
+    <!--####################### Add  Modal ######################-->
+    <div class="modal fade" id="addModal" role="dialog">
+        <div class="modal-dialog" >
 
-      <!-- Modal content-->
-      <div class="modal-content" style="background-color: #E8E8E8;">
+            <!-- Modal content-->
+            <div class="modal-content" style="background-color: #E8E8E8;">
 
-        <div class="modal-body" style="padding:40px 50px;">
-        <!--  <form role="form"   id="addReservForm" method="post" th:action='@{/addReserv}' th:object="${doReservDto}">-->
+                <div class="modal-body" style="padding:40px 50px;">
+                    <!--  <form role="form"   id="addReservForm" method="post" th:action='@{/addReserv}' th:object="${doReservDto}">-->
 
-          	<div class="form-group">
-          		<button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4>İclas otağına rezervasiya</h4>
-          <br /> <br />
-              <label for="usrname"><span></span>Ad və Soyad</label>
-              <input th:value="*{fullname}" id="fullname" name="fullname" type="text" class="form-control"  >
+                    <div class="form-group">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4>İclas otağına rezervasiya</h4>
+                        <br /> <br />
+                        <label for="usrname"><span></span>Ad və Soyad</label>
+                        <input th:value="*{fullname}" id="fullname" name="fullname" type="text" class="form-control" required >
+                    </div>
+                    <div class="form-group">
+                        <label for="usrname"><span></span>İclasın qısa məqsədi</label>
+                        <input type="text" class="form-control" id="topic" name="topic" th:value="*{topic}">
+                    </div>
+                    <div class="form-group">
+                        <label for="psw"><span></span> Başlama tarixi</label>
+                        <input id="date" name="date" type="text" class="form-control datepicker" style="background-color: white;" th:value="*{date}">
+                    </div>
+                    <!--step="2"  saniye elave etmek-->
+                    <div class="form-group">
+                        <label for="psw"><span></span> Başlama vaxtı</label>
+                        <input type="time" style="width: 100%; height: 35px; border-radius: 5px;" id="startTime" name="startTime" th:value="*{startTime}">
+                    </div>
+                    <div class="form-group">
+                        <label for="psw"><span></span> Bitmə vaxtı</label>
+                        <input name="endTime" id="endTime" type="time" style="width: 100%; height: 35px; border-radius: 5px;" th:value="*{endTime}">
+                    </div>
+                    <div class="form-group">
+
+                        <select    id="meetingSelect" name="meetings" class="select-css" >
+                            <option  isabled="true" selected="selected" >İclas Otağını Seçin</option>
+
+                            <option th:each="meeting : ${meetingsList}"
+                                    th:value="${meeting.id}"
+                                    th:utext="${meeting.room}">
+                            </option>
+
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <button style="font: normal 18px Arial;" type="submit" class="btn btn-success btn-block"  id="addReservBtn"><span></span>Rezervasiya et</button>
+                <button  style="background-color: #BF1F1F; border: 1px solid #BF1F1F; font: normal 18px Arial;" type="submit" class="btn btn-success btn-block" id="btnr"><span></span> Ləğv et</button>
+                <!--    </form>-->
+
             </div>
-            <div class="form-group">
-              <label for="usrname"><span></span>İclasın qısa məqsədi</label>
-              <input type="text" class="form-control" id="topic" name="topic" th:value="*{topic}">
-            </div>
-            <div class="form-group">
-              <label for="psw"><span></span> Başlama tarixi</label>
-              <input id="date" name="date" type="text" class="form-control datepicker" style="background-color: white;" th:value="*{date}">
-            </div>
-             <!--step="2"  saniye elave etmek-->
-            <div class="form-group">
-              <label for="psw"><span></span> Başlama vaxtı</label>
-              <input type="time" style="width: 100%; height: 35px; border-radius: 5px;" id="startTime" name="startTime" th:value="*{startTime}">
-            </div>
-              <div class="form-group">
-              <label for="psw"><span></span> Bitmə vaxtı</label>
-              <input name="endTime" id="endTime" type="time" style="width: 100%; height: 35px; border-radius: 5px;" th:value="*{endTime}">
-            </div>
-            <div class="form-group">
-
-                <select    id="meetingSelect" name="meetings" class="select-css" >
-                    <option  isabled="true" selected="selected" >İclas Otağını Seçin</option>
-
-                    <option th:each="meeting : ${meetingsList}"
-                            th:value="${meeting.id}"
-                            th:utext="${meeting.room}">
-                    </option>
-
-                </select>
-            </div>
-            </div>
-            <br />
-              <button style="font: normal 18px Arial;" type="submit" class="btn btn-success btn-block"  id="addReservBtn"><span></span>Rezervasiya et</button>
-              <button  style="background-color: #BF1F1F; border: 1px solid #BF1F1F; font: normal 18px Arial;" type="submit" class="btn btn-success btn-block" id="btnr"><span></span> Ləğv et</button>
-      <!--    </form>-->
 
         </div>
 
-      </div>
-
     </div>
-  </div>
+</div>
 
-    <script>
-        function openwindow(){
-           dialog('close');
-        }
-    </script>
-	<div class="limiter">
-		<div class="container-table100">
-			<div class="wrap-table100">
-				<div class="table100">
-					<table>
+<script>
+    function openwindow(){
+        dialog('close');
+    }
+</script>
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100">
+                <table>
 
-						<thead>
-							<tr class="thead">
-								<th class="column1">№</th>
-                                <!--<th class="column2">Rezerv edən</th>-->
-								<th class="column3">Ad Soyad</th>
-								<th class="column4">Qısa məqsədi</th>
-								<th class="column5">Tarix</th>
-								<th class="column6">Başlama vaxtı</th>
-								<th class="column7">Bitmə vaxtı</th>
-								<th class="column8">Otaq</th>
-								<th class="column9"><select style="background-color: #670826; color: white; border: 1px solid #670826; cursor: pointer;">
-								 	<option style="color: silver;">Status</option>
-									<option>Aktiv</option>
-									<option>Deaktiv</option>
-								</select></th>
-                                <th class="column10">Sil</th>
-							</tr>
-						</thead>
+                    <thead>
+                    <tr class="thead">
+                        <th class="column1">№</th>
+                        <!--<th class="column2">Rezerv edən</th>-->
+                        <th class="column3">Ad Soyad</th>
+                        <th class="column4">Qısa məqsədi</th>
+                        <th class="column5">Tarix</th>
+                        <th class="column6">Başlama vaxtı</th>
+                        <th class="column7">Bitmə vaxtı</th>
+                        <th class="column8">Otaq</th>
+                        <th class="column9"><select style="background-color: #670826; color: white; border: 1px solid #670826; cursor: pointer;">
+                            <option style="color: silver;">Status</option>
+                            <option>Aktiv</option>
+                            <option>Deaktiv</option>
+                        </select></th>
+                        <th class="column10">Edit</th>
+                        <th class="column11">Sil</th>
 
-						<tbody id="firstTable">
-                        <tr  class="myBtn"   th:onclick="'javascript:xccfx(' + ${item.id} + ')'" th:each="item : ${doReservList}">
-                            <td class="column1" th:text="${item.id}" id="updateId"></td>
-                           <!-- <td class="column2" th:text="${item.personId}"></td>-->
-                            <td class="column3" th:text="${item.fullname}" id="updateFullname"></td>
-                            <td class="column4" th:text="${item.topic}" id="updateTopic"></td>
-                            <td class="column5" th:text="${#dates.format(item.date,'yyyy-MM-dd')}" id="updateDate"></td>
-                            <td class="column6" th:text="${item.startTime}" id="updateStartTime"></td>
-                            <td class="column7" th:text="${item.endTime}" id="updateEndTime"></td>
-                            <td class="column8" th:text="${item.meetings.room}" id="updateRoom"></td>
-                            <td class="column9" th:text="${item.status}"></td>
-                            <td class="column10"><a th:href="@{'/delete/'+${item.id}}">Sil </a></td>
+                    </tr>
+                    </thead>
+
+                    <tbody id="firstTable">
+                    <!--<tr  class="myBtn"  th:href="'javascript: editReservation(' + ${item.id} + ')'" th:each="item : ${doReservList}">-->
+                        <tr  class="myBtn"  th:each="item : ${doReservList}">
+                        <td class="column1" th:text="${item.id}" id="updateId"></td>
+                        <!-- <td class="column2" th:text="${item.personId}"></td>-->
+                        <td class="column3" th:text="${item.fullname}" id="updateFullname"></td>
+                        <td class="column4" th:text="${item.topic}" id="updateTopic"></td>
+                        <td class="column5" th:text="${#dates.format(item.date,'yyyy-MM-dd')}" id="updateDate"></td>
+                        <td class="column6" th:text="${item.startTime}" id="updateStartTime"></td>
+                        <td class="column7" th:text="${item.endTime}" id="updateEndTime"></td>
+                        <td class="column8" th:text="${item.meetings.room}" id="updateRoom"></td>
+                        <td class="column9" th:text="${item.status}"></td>
+                        <td class="column10 myBtn"><a th:href="'javascript: editReservation('+${item.id}+')'">Edit</a></td>
+                        <td class="column11"><a th:href="@{'/delete/'+${item.id}}">Sil</a></td>
                         <!--    <td class="column11"><a th:href="@{/updateReserv/{id}(id=${item.id})}">Edit</a></td>-->
-                          <!--  <td class="column11"><a th:href="'editDoReserv(\''+ ${item.id} +'\');'">Edit</a></td>-->
-                           <!--<td class="column11"><a>Edit</a></td>-->
-                        </tr>
-						</tbody>
+                        <!--  <td class="column11"><a th:href="'editDoReserv(\''+ ${item.id} +'\');'">Edit</a></td>-->
+                        <!--<td class="column11"><a>Edit</a></td>-->
+                    </tr>
+                    </tbody>
 
-                        <tbody id="secondTable" style="display: none">
-                        <tr class="myBtn" th:each="item : ${doReservList}" >
-                            <td class="column1" th:text="${item.id}"></td>
-                            <!-- <td class="column2" th:text="${item.personId}"></td>-->
-                            <!-- <td class="column3" th:text="${item.fullname}"></td>-->
-                            <td class="column4" th:text="${item.topic}"></td>
-                            <td class="column5" th:text="${#dates.format(item.date,'yyyy-MM-dd')}"></td>
-                            <td class="column6" th:text="${item.startTime}"></td>
-                            <td class="column7" th:text="${item.endTime}"></td>
-                            <td class="column8" th:text="${item.meetings.room}"></td>
-                            <td class="column9" th:text="${item.status}"></td>
-                            <!--<td class="column10"><a th:href="@{'/delete/'+${item.id}}">Delete</a></td>-->
-                        </tr>
-                        </tbody>
+                    <tbody id="secondTable" style="display: none">
+                    <tr class="myBtn" th:each="item : ${doReservList}" >
+                        <td class="column1" th:text="${item.id}"></td>
+                        <!-- <td class="column2" th:text="${item.personId}"></td>-->
+                        <!-- <td class="column3" th:text="${item.fullname}"></td>-->
+                        <td class="column4" th:text="${item.topic}"></td>
+                        <td class="column5" th:text="${#dates.format(item.date,'yyyy-MM-dd')}"></td>
+                        <td class="column6" th:text="${item.startTime}"></td>
+                        <td class="column7" th:text="${item.endTime}"></td>
+                        <td class="column8" th:text="${item.meetings.room}"></td>
+                        <td class="column9" th:text="${item.status}"></td>
+                        <!--<td class="column10"><a th:href="@{'/delete/'+${item.id}}">Delete</a></td>-->
+                    </tr>
+                    </tbody>
 
-					</table>
-					<br />
-					 <div class="text-center">
-                <button type="button" class="btn btn-primary" style="border-radius: 3px;background-color:  #670826; border: 1px solid  #670826;">Daha çox +</button></div>
+                </table>
+                <br />
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary" style="border-radius: 3px;background-color:  #670826; border: 1px solid  #670826;">Daha çox +</button></div>
             </div>
-				</div>
-			</div>
+        </div>
+    </div>
 
-		</div>
+</div>
 
 
-	</div>
+</div>
 
-    <script th:src="@{/js/action.js}"></script>
-    <script th:src="@{/js/app.js}"></script>
-	 <script th:src="@{vendor/jquery/jquery-3.2.1.min.js}"></script>
-	<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
-	<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
-	<script th:src="@{/vendor/select2/select2.min.js}"></script>
-	<script th:src="@{/vendor/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
-	<script th:src="@{/js/main.js}"></script>
-    <script th:src="@{/reserve_search/js/extention/choices.js}"></script>
-    <script th:src="@{/reserve_search/js/extention/flatpickr.js}"></script>
-    <script th:src="@{/js/demofull.js}"></script>
+<script th:src="@{/js/action.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{vendor/jquery/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/vendor/select2/select2.min.js}"></script>
+<script th:src="@{/vendor/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/reserve_search/js/extention/choices.js}"></script>
+<script th:src="@{/reserve_search/js/extention/flatpickr.js}"></script>
+<script th:src="@{/js/demofull.js}"></script>
 </body>
 </html>

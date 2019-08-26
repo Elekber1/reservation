@@ -5,13 +5,13 @@ import az.com.adra.reservation.model.DoReservDto;
 import az.com.adra.reservation.model.MeetingsDto;
 
 
-import az.com.adra.reservation.model.PeopleDto;
+//import az.com.adra.reservation.model.PeopleDto;
 import az.com.adra.reservation.persistence.entity.DoReserv;
 import az.com.adra.reservation.persistence.entity.Meetings;
 import az.com.adra.reservation.persistence.service.MeetingsService;
 import az.com.adra.reservation.persistence.service.DoReservService;
-import az.com.adra.reservation.persistence.service.PeopleService;
-import com.sun.xml.internal.bind.v2.model.core.ID;
+//import az.com.adra.reservation.persistence.service.PeopleService;
+//import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +33,8 @@ ReservController {
     @Autowired
     private MeetingsService meetingsService;
 
-    @Autowired
-    private PeopleService peopleService;
+//    @Autowired
+//    private PeopleService peopleService;
 
     public List<DoReservDto> doReservList(){
     List<DoReservDto> doReservDtos = doReservService.findAll()
@@ -56,14 +56,14 @@ ReservController {
         return list;
     }
 
-    public List<PeopleDto> peopleDtoList(){
-        List<PeopleDto> list =  peopleService.findAll()
-                .stream()
-                .map(p -> new PeopleDto(p.getName()))
-                .collect(Collectors.toList());
-
-        return list;
-    }
+//    public List<PeopleDto> peopleDtoList(){
+//        List<PeopleDto> list =  peopleService.findAll()
+//                .stream()
+//                .map(p -> new PeopleDto(p.getName()))
+//                .collect(Collectors.toList());
+//
+//        return list;
+//    }
 
     public List<DoReservDto> advancedSearch(DoReservDto doReservSearch){
 
@@ -91,22 +91,23 @@ ReservController {
        view.addObject("meetings",new MeetingsDto());
        view.addObject("meetingsList",meetingsList());
        view.addObject("doReservList",doReservList());
-       view.addObject("personId", new PeopleDto());
-       view.addObject("peopleDtoList",peopleDtoList());
+//       view.addObject("personId", new PeopleDto());
+//       view.addObject("peopleDtoList",peopleDtoList());
        view.setViewName("table");
 
        return view;
    }
 
-
+//    @RequestParam("meetings")
    @RequestMapping(value = "/search", method = RequestMethod.GET)
    public ModelAndView searchPerson (ModelAndView view, DoReservDto doReservSearch, @RequestParam("fullname") String fullname, @RequestParam("date")Date date, @RequestParam("meetings") Meetings meetings){
+       doReservService.findByFullnameAndDateAndMeetings(fullname, date, meetings);
        view.addObject("meetings",new MeetingsDto());
        view.addObject("meetingsList",meetingsList());
-       doReservService.findByFullnameAndDateAndMeetings(fullname, date, meetings);
        view.addObject("doReservDto",new DoReservDto());
        view.addObject("advancedSearch",advancedSearch(doReservSearch));
 
+       System.out.println("SEARCHHHHHHHHHHHHHHH####################= "+advancedSearch(doReservSearch));
        view.setViewName("advancedSearch");
 
         return view;
@@ -143,13 +144,14 @@ ReservController {
     @RequestMapping("/edit")
     @ResponseBody
     public DoReservDto edit(@RequestParam("id") Long id, ModelAndView view, MeetingsDto meetings){
-        DoReservDto doReservDto1 = doReservEditList(id);
+        DoReservDto doReservDto = doReservEditList(id);
         view.addObject("doReservDto", new DoReservDto());
         view.addObject("doReservList",doReservList());
         view.addObject("meetings",new MeetingsDto());
         view.addObject("meetingsList",meetingsList());
 //        view.setViewName("redirect:/");
-        return doReservDto1;
+        System.out.println(doReservDto);
+        return doReservDto;
     }
 
     @RequestMapping(value = "/updateReserv/{id}", method = RequestMethod.GET)

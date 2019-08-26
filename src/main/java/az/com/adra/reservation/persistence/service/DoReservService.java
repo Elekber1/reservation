@@ -21,5 +21,7 @@ public interface DoReservService {
 
     public List<DoReserv> findByFullnameAndDateAndMeetings(String fullname, Date date, Meetings meetings);
 
+//    public List<DoReserv> find(String fullname, Date date, Meetings meetings);
+
 
 }

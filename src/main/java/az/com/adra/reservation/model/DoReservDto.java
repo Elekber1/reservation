@@ -2,7 +2,7 @@ package az.com.adra.reservation.model;
 
 import az.com.adra.reservation.persistence.entity.Meetings;
 import az.com.adra.reservation.persistence.entity.DoReserv;
-import az.com.adra.reservation.persistence.entity.People;
+//import az.com.adra.reservation.persistence.entity.People;
 
 
 import java.sql.Date;
